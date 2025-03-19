@@ -10,7 +10,8 @@ exports.addToCart = async(req,res)=>{
         if(!cart){
             cart = new Cart({userId:req.user.id,items:[]})
         }
-        const exitstingitem = cart.items.find((item)=>item.productId && item.productId.tostring()===productId.toString())
+        const exitstingitem = cart.items
+        .find((item)=>item.productId && item.productId.toString()===productId.toString())
         if(exitstingitem){
             exitstingitem.quantity++
         }
